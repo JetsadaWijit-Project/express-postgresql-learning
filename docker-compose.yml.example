@@ -1,0 +1,12 @@
+services:
+  app:
+    build: ./src
+    command: >
+      sh -c "npm install && npm start"
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - SESSION_SECRET=
+    restart: always
+    working_dir: /usr/src/app
