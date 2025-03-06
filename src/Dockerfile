@@ -1,20 +1,17 @@
 # Use an official Node.js image
 FROM node:18
 
-# Create app directory
-WORKDIR /usr/src/app
+# Set working directory
+WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Copy the entire source folder (including package.json)
+COPY . .
 
 # Install dependencies
 RUN npm install
 
-# Copy the app files
-COPY . .
-
-# Expose port 3000
+# Expose the port
 EXPOSE 5000
 
-# Run the app
+# Start the app
 CMD ["npm", "start"]
