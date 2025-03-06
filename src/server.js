@@ -36,7 +36,10 @@ app.get("/dashboard", (req, res) => {
   res.render("dashboard", { user: req.session.user });
 });
 
-// Sync DB & Start Server
-sequelize.sync().then(() => {
-  app.listen(5000, () => console.log("Server running on port 5000"));
-});
+// Sync database (Create tables if not exist)
+sequelize.sync({ alter: true })  // Ensures tables are created/updated
+  .then(() => {
+    console.log("Database synced successfully.");
+    app.listen(5000, () => console.log("Server running on port 5000"));
+  })
+  .catch(err => console.error("Database sync failed:", err));
