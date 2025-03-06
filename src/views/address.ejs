@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+<h2>Your Addresses</h2>
+<ul>
+  <% addresses.forEach(address => { %>
+    <li><%= address.street %>, <%= address.city %>, <%= address.country %></li>
+  <% }); %>
+</ul>
+<h3>Add New Address</h3>
+<form action="/address/add" method="POST">
+  <input type="text" name="street" placeholder="Street" required /><br />
+  <input type="text" name="city" placeholder="City" required /><br />
+  <input type="text" name="country" placeholder="Country" required /><br />
+  <button type="submit">Add</button>
+</form>
+<%- include('partials/footer') %>
